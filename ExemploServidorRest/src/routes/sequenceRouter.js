@@ -1,8 +1,8 @@
-const SequenceRoute = require('../controllers/sequenceControler')
+const SequenceController = require('../controllers/sequenceControler')
   module.exports = (app) => {
-     app.post('/sequence', SequenceRoute.post);
-     app.put('/sequence', SequenceRoute.put);
-     app.delete('/sequence', SequenceRoute.delete);
-     app.get('/sequence', SequenceRoute.get);
-     app.get('/sequence/:id', SequenceRoute.getById);
+     app.post('/sequence', SequenceController.post);
+     app.put('/sequence', SequenceController.put);
+     app.delete('/sequence', SequenceController.delete);
+     app.get('/sequence', SequenceController.get);
+     app.get('/sequence/:id', SequenceController.getById);
   }
