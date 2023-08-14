@@ -1,3 +1,14 @@
+const Sequence = require('../models/sequence');
+exports.post = async (req, res, next) => {
+    try {
+      // Use o modelo para criar um novo registro
+      const newSequence = await Sequence.create(req.body);
+      res.status(201).json(newSequence);
+    } catch (error) {
+      next(error);
+    }
+  };
+
 exports.post = (req, res, next) => {
     res.status(201).send('route POST!');
 };
