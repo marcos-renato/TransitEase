@@ -1,5 +1,7 @@
 *.log
 *.exe
 *.o
+*.msi
 node_modules
 brModelo.jar
+comandos_transiteasy.txt
