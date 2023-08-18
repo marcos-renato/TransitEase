@@ -1,0 +1,25 @@
+INSERT INTO `homologacao`.`usuario` (`idusuario`, `nmusuario`, `senha`, `snativo`, `id_tipo_usuario`) VALUES ('1', 'markosren', '1234', 'S', '1');
+
+create table tipo_usuarios(
+id_tipo_usuario int,
+ds_tipo_usuario varchar(20),
+sn_ativo varchar(1)
+);
+
+create table usuarios(
+id_usuario int,
+ds_login varchar(50),
+password varchar(50),
+id_tipo_usuario int,
+dt_criacriacao date,
+sn_ativo varchar(1)
+);
+
+create table usuarios(
+id_usuario int,
+ds_login varchar(50),
+password_ varchar(50),
+id_tipo_usuario int,
+dt_criacriacao datetime,
+sn_ativo varchar(1)
+);
