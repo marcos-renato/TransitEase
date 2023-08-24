@@ -12,5 +12,11 @@
   "devDependencies": {
     "@figma/plugin-typings": "*",
     "typescript": "*"
+  },
+  "dependencies": {
+    "manifest.json": "^1.2.0",
+    "package-lock.json": "^1.0.0",
+    "package.json": "^2.0.1",
+    "tsconfig.json": "^1.0.11"
   }
 }
