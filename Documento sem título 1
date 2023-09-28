@@ -1,0 +1,19 @@
+apt-get install curl
+
+npx react-native init AwesomeTSProject --template react-native-template-typescriptcd "/home/marcos/AwesomeProjectnpx" && npx react-native run-android
+
+
+webservice rest
+
+*pasta para ser criadas
+-aquivo para ser criado
+
+
+*src
+  -server.js
+  *controllers
+     -sequenceControler.js
+  *routes
+     -sequenceRoute.js
+
+
