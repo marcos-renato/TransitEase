@@ -2,6 +2,8 @@
     const cors = require('cors');
     const app = express();
     const PORT = 3010
+ 
+
     app.use(cors());
     /*app.use(cors({
       origin: 'http://seusite.com', // Substitua pela origem permitida
