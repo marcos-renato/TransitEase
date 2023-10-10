@@ -6,6 +6,14 @@ const connection = mysql.createConnection({
   database: 'transiteasydb'
 });
 
+connection.query("select idCidade, idEstado, nmCidade, snAtivo from cidades", function(err,rows,fields){
+  if(!err){
+    console.log("Resultado:",rows);
+  }else{
+    console.log('erro: Consulta não realizada com sucesso||');
+  }
+})
+
 connection.connect(function(err){
   console.log("Conexão realizada com sucesso!");
 });

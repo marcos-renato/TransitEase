@@ -1,6 +1,7 @@
-const SequenceRoute = require('./sequenceRouter')
+
+const SequenceRouter = require('./sequenceRouter')
 module.exports = (app) => {
-    SequenceRoute(app)
+    SequenceRouter(app)
 };
 const sequelize = require('./models/db');
 
