@@ -17,4 +17,4 @@
        console.log('server initialized ' + PORT);
     });
   
-    require('./src/routes/index')(app)
+    require('../ExemploServidorRest/src/routes/index')(app)
