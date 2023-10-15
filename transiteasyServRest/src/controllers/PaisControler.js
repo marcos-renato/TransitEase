@@ -25,7 +25,7 @@ exports.delete = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-    res.status(200).send('route GET!');
+    res.status(200).send('Pais route GET!');
 };
 
 exports.getById = (req, res, next) => {

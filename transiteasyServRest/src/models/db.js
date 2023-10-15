@@ -1,19 +1,20 @@
-const mysql = require('mysql2');
-const connection = mysql.createConnection({
-  host:'172.17.0.2',
-  user: 'root',
-  password:'12345678',
-  database: 'transiteasydb'
+const { Sequelize } = require('sequelize');
+
+const sequelize = new Sequelize({
+  dialect: 'mysql', // Use 'mysql' para MariaDB
+  host: '172.17.0.2', 
+  username: 'root',
+  password: '12345678', 
+  database: 'transiteasydb', 
 });
 
-connection.query("select idCidade, idEstado, nmCidade, snAtivo from cidades", function(err,rows,fields){
-  if(!err){
-    console.log("Resultado:",rows);
-  }else{
-    console.log('erro: Consulta não realizada com sucesso||');
-  }
-})
+// Testar a conexão
+sequelize.authenticate()
+  .then(() => {
+    console.log('Conexão com o banco de dados estabelecida com sucesso.');
+  })
+  .catch((err) => {
+    console.error('Erro ao conectar ao banco de dados:', err);
+  });
 
-connection.connect(function(err){
-  console.log("Conexão realizada com sucesso!");
-});
+module.exports = sequelize;

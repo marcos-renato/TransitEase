@@ -25,10 +25,10 @@ exports.delete = (req, res, next) => {
 };
 
 exports.get = (req, res, next) => {
-    res.status(200).send('route GET!');
+    res.status(200).send('Estado route GET!');
 };
 
 exports.getById = (req, res, next) => {
     let id = req.params.id;
-    res.status(200).send(`route GET with ID! ${id}`);
+    res.status(200).send(`Estado route GET with ID! ${id}`);
 };
