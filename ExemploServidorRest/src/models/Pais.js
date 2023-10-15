@@ -1,6 +1,6 @@
 const sequelize = require('sequelize');
 
-const Pais = sequelize.define('Pais', {
+const pais = sequelize.define('pais', {
   
   idPais: sequelize.INTEGER,
   nmPais: sequelize.STRING,
@@ -8,4 +8,4 @@ const Pais = sequelize.define('Pais', {
 
 });
 
-module.exports = Pais;
+module.exports = pais;

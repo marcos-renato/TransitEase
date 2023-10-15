@@ -1,5 +1,7 @@
 
-const SequenceRouter = require('./sequenceRouter')
+const SequenceRouter = require('./sequenceRouter');
+//const PaisRouter = require('./paisRouter');
 module.exports = (app) => {
-    SequenceRouter(app)
+    SequenceRouter(app);
+    //PaisRouter(app);
 };
