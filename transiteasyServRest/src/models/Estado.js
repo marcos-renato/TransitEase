@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('./db');
 const Pais = require('./Pais'); // Importe o modelo da tabela Pais
 
-const Estado = sequelize.define('Estado', {
+const Estado = sequelize.define('estado', {
   idEstado: {
     type: DataTypes.INTEGER,
     primaryKey: true,
