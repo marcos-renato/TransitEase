@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('./db'); 
 
-const Pais = sequelize.define('pais', {
+const pais = sequelize.define('pais', {
   idPais: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -17,4 +17,4 @@ const Pais = sequelize.define('pais', {
   },
 });
 
-module.exports = Pais;
+module.exports = pais;

@@ -4,7 +4,7 @@ const sequelize = require('../models/db'); // Certifique-se de que o caminho par
 // Função para executar a consulta SQL e retornar resultados
 const consultarPaises = async (req, res) => {
   try {
-    const query = 'select idPais ,nmPais from transiteasydb.paises p ';
+    const query = 'select p.idPais ,p.nmPais from transiteasydb.pais p ';
     const results = await sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
 
     // Enviar os resultados como resposta
@@ -34,8 +34,18 @@ const excluirPais = (req, res, next) => {
   // Sua lógica de exclusão aqui
 };
 
-const listarPaises = (req, res, next) => {
+const listarPaises = async (req, res, next) => {
   // Sua lógica para listar todos os países aqui
+  try {
+    const query = 'select p.idPais ,p.nmPais from transiteasydb.pais p ';
+    const results = await sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
+
+    // Enviar os resultados como resposta
+    res.json(results);
+  } catch (error) {
+    console.error('Erro ao executar a consulta:', error);
+    res.status(500).json({ error: 'Erro ao executar ao listar os paises.' });
+  }
 };
 
 const obterPaisPorId = (req, res, next) => {

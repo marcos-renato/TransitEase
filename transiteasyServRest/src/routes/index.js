@@ -5,5 +5,5 @@ const EstadoRouter = require('./estadoRouter')
 module.exports = (app) => {
     SequenceRouter(app);
     PaisRouter(app);
-   // EstadoRouter(app);
+    EstadoRouter(app);
 };
