@@ -1,34 +1,52 @@
-const Pais = require('../models/Pais');
-exports.post = async (req, res, next) => {
-    try {
-      // Use o modelo para criar um novo registro
-      const newPais = await Pais.create(req.body);
-      res.status(201).json(newPais);
-    } catch (error) {
-      next(error);
-    }
-  };
+const { Sequelize } = require('sequelize');
+const sequelize = require('../models/db'); // Certifique-se de que o caminho para a instância do Sequelize está correto
 
-exports.post = (req, res, next) => {
-    res.status(201).send('route POST!');
+// Função para executar a consulta SQL e retornar resultados
+const consultarPaises = async (req, res) => {
+  try {
+    const query = 'select idPais ,nmPais from transiteasydb.paises p ';
+    const results = await sequelize.query(query, { type: Sequelize.QueryTypes.SELECT });
+
+    // Enviar os resultados como resposta
+    res.json(results);
+  } catch (error) {
+    console.error('Erro ao executar a consulta:', error);
+    res.status(500).json({ error: 'Erro ao executar a consulta.' });
+  }
 };
 
-exports.put = (req, res, next) => {
-    console.log(req.body)
-    let id = req.body.id;
-    res.status(201).send(`route PUT with ID! --> ${id}`);
+// Função para criar um novo registro de país
+const criarPais = async (req, res, next) => {
+  try {
+    // Use o modelo para criar um novo registro
+    const newPais = await Pais.create(req.body);
+    res.status(201).json(newPais);
+  } catch (error) {
+    next(error);
+  }
 };
 
-exports.delete = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(`route DELETE with ID! --> ${id}`);
+const atualizarPais = (req, res, next) => {
+  // Sua lógica de atualização aqui
 };
 
-exports.get = (req, res, next) => {
-    res.status(200).send('Pais route GET!');
+const excluirPais = (req, res, next) => {
+  // Sua lógica de exclusão aqui
 };
 
-exports.getById = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(`route GET with ID! ${id}`);
+const listarPaises = (req, res, next) => {
+  // Sua lógica para listar todos os países aqui
+};
+
+const obterPaisPorId = (req, res, next) => {
+  // Sua lógica para obter um país por ID aqui
+};
+
+module.exports = {
+  consultarPaises,
+  criarPais,
+  atualizarPais,
+  excluirPais,
+  listarPaises,
+  obterPaisPorId,
 };
