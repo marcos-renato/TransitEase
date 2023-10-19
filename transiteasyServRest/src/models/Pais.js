@@ -1,7 +1,7 @@
 const  Sequelize  = require('sequelize');
-const database = require('./db'); 
+const database = require('../models/db');
 
-const pais = database.define('pais', {
+const Pais = database.define('pais', {
   idPais: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -9,13 +9,10 @@ const pais = database.define('pais', {
     allowNull: false
   },
   nmPais: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(100),
     allowNull: false
   },
-  snAtivo: {
-    type: Sequelize.STRING,
-    allowNull: false
-  }
+  snAtivo: {type: Sequelize.STRING(1)}
 });
 
-module.exports = pais;
+module.exports = Pais;

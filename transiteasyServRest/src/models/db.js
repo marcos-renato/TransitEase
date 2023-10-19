@@ -1,8 +1,9 @@
-const { Sequelize } = require('sequelize');
+const Sequelize = require('sequelize');
 
 const sequelize = new Sequelize({
   dialect: 'mysql', // Use 'mysql' para MariaDB
   host: '172.17.0.2', 
+  //host: '172.17.0.3', 
   username: 'root',
   password: '12345678', 
   database: 'transiteasydb', 
