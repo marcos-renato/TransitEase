@@ -1,16 +1,22 @@
-const Sequelize  = require('sequelize');
+const Sequelize = require('sequelize');
 const database = require('../models/db');
 const Pais = require('../models/Pais');
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+app.use(bodyParser.json()); // Middleware para analisar o corpo das solicitações em formato JSON
+
 
 const consultarPaises = async (req, res) => {
   try {
 
     const results = await Pais.findAll({
-      where:{
+      where: {
         nmPais: req.body.nmPais
       }
-      } );
-  
+    });
+
     res.json(results);
   } catch (error) {
     console.error('Erro ao executar a consulta:', error);
@@ -19,20 +25,20 @@ const consultarPaises = async (req, res) => {
 };
 
 const criarPais = async (req, res, next) => {
-     try {
+  try {
 
-      const newPais = await Pais.create(req.body);
-      res.status(201).json(newPais);
+    const newPais = await Pais.create(req.body);
+    res.status(201).json(newPais);
 
-     } catch (error) {
-       next(error);
-    }
+  } catch (error) {
+    next(error);
+  }
 };
 
 
 const atualizarPais = async (req, res, next) => {
 
-  const idPais = req.params.id; 
+  const idPais = req.params.id;
   try {
     await Pais.update(req.body, {
       where: { idPais },
@@ -43,24 +49,33 @@ const atualizarPais = async (req, res, next) => {
   };
 };
 
-  const excluirPais = async (req, res, next) => {
-   
-    const id = req.params.id; 
-    try {
-      await Pais.destroy({
-      where: { 
-        idPais:id         },
-      });
-      res.status(200).json({ message: 'País excluído com sucesso.' });
-   } catch (error) {
-     next(error);
-   }
+const excluirPais = async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    // Use a função findByPk com o ID diretamente
+    const pais = await Pais.findByPk(id);
+
+    if (!pais) {
+      return res.status(404).json({ message: 'País não encontrado.' });
+    }
+
+    // Use a função destroy no resultado retornado por findByPk
+    await pais.destroy();
+
+    res.status(200).json({ message: 'País excluído com sucesso.' });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
+
+
 
 
 const listarPaises = async (req, res, next) => {
   try {
-   
+
     const results = await Pais.findAll();
     res.json(results);
 
