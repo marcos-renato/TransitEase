@@ -41,7 +41,7 @@ const atualizarPais = async (req, res, next) => {
   const idPais = req.params.id;
   try {
     await Pais.update(req.body, {
-      where: { idPais },
+      where:Pais.idPais={idPais}
     });
     res.status(200).json({ message: 'País atualizado com sucesso.' });
   } catch (error) {
