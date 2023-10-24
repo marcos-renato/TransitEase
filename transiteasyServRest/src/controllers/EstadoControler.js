@@ -1,34 +1,107 @@
+const Sequelize = require('sequelize');
+const database = require('../models/db');
 const Estado = require('../models/Estado');
-exports.post = async (req, res, next) => {
-    try {
-      // Use o modelo para criar um novo registro
-      const newEstado = await Estado.create(req.body);
-      res.status(201).json(newEstado);
-    } catch (error) {
-      next(error);
-    }
+const express = require('express');
+const bodyParser = require('body-parser');
+const app = express();
+
+app.use(bodyParser.json()); // Middleware para analisar o corpo das solicitações em formato JSON
+
+
+const consultarEstado = async (req, res) => {
+  try {
+
+    const results = await Estado.findAll({
+      where: {
+        nmEstado: req.body.nmEstado
+      }
+    });
+
+    res.json(results);
+  } catch (error) {
+    console.error('Erro ao executar a consulta:', error);
+    res.status(500).json({ error: 'Erro ao executar a consulta.' });
+  }
+};
+
+const criarEstado = async (req, res, next) => {
+  try {
+
+    const newEstado = await Estado.create(req.body);
+    res.status(201).json(newEstado);
+
+  } catch (error) {
+    next(error);
+  }
+};
+
+
+const atualizarEstado = async (req, res, next) => {
+
+  const idEstado = req.params.id;
+  try {
+    await Estado.update(req.body, {
+      where:Estado.idEstado={idEstado}
+    });
+    res.status(200).json({ message: 'Estado atualizado com sucesso.' });
+  } catch (error) {
+    next(error);
   };
-
-exports.post = (req, res, next) => {
-    res.status(201).send('route POST!');
 };
 
-exports.put = (req, res, next) => {
-    console.log(req.body)
-    let id = req.body.id;
-    res.status(201).send(`route PUT with ID! --> ${id}`);
+const excluirEstado = async (req, res, next) => {
+  const id = req.params.id;
+
+  try {
+    // Use a função findByPk com o ID diretamente
+    const estado = await Estado.findByPk(id);
+
+    if (!estado) {
+      return res.status(404).json({ message: 'Estado não encontrado' });
+    }
+
+    // Use a função destroy no resultado retornado por findByPk
+    await estado.destroy();
+
+    res.status(200).json({ message: 'Estado excluído com sucesso.' });
+  } catch (error) {
+    console.log(error);
+    next(error);
+  }
 };
 
-exports.delete = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(`route DELETE with ID! --> ${id}`);
+
+
+
+const listarEstados = async (req, res, next) => {
+  try {
+
+    const results = await Estado.findAll();
+    res.json(results);
+
+  } catch (error) {
+    console.error('Erro ao executar a consulta:', error);
+    res.status(500).json({ error: 'Erro ao executar ao listar os Estados.' });
+  }
 };
 
-exports.get = (req, res, next) => {
-    res.status(200).send('Estado route GET!');
+const obterEstadoPorId = async (req, res, next) => {
+  try {
+
+    const results = await Estado.findByPk(req.params.id);
+    res.json(results);
+
+  } catch (error) {
+    console.error('Erro ao executar a consulta:', error);
+    res.status(500).json({ error: 'Erro ao executar ao listar os Estados.' });
+  }
 };
 
-exports.getById = (req, res, next) => {
-    let id = req.params.id;
-    res.status(200).send(`Estado route GET with ID! ${id}`);
+module.exports = {
+  consultarEstado,
+  criarEstado,
+  atualizarEstado,
+  excluirEstado,
+  listarEstados,
+  obterEstadoPorId,
 };

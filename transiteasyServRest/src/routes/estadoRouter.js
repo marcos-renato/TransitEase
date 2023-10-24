@@ -1,8 +1,8 @@
 const estadoControler = require('../controllers/EstadoControler')
   module.exports = (app) => {
-     app.post('/estado', estadoControler.post);
-     app.put('/estado', estadoControler.put);
-     app.delete('/estado', estadoControler.delete);
-     app.get('/estado', estadoControler.get);
-     app.get('/estado/:id', estadoControler.getById);
+     app.post('/estado', estadoControler.criarEstado);
+     app.put('/estado/:id', estadoControler.atualizarEstado);
+     app.delete('/estado/:id', estadoControler.excluirEstado);
+     app.get('/estado', estadoControler.listarEstados);
+     app.get('/estado/:id', estadoControler.obterEstadoPorId);
   }

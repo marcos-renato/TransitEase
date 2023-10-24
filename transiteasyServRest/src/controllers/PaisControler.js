@@ -56,8 +56,8 @@ const excluirPais = async (req, res, next) => {
     // Use a função findByPk com o ID diretamente
     const pais = await Pais.findByPk(id);
 
-    if (!pais) {
-      return res.status(404).json({ message: 'País não encontrado.' });
+    if (pais==null) {
+      return res.status(404).json({ message: 'País não encontrado' });
     }
 
     // Use a função destroy no resultado retornado por findByPk

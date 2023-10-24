@@ -1,33 +1,22 @@
-const { DataTypes } = require('sequelize');
-const sequelize = require('./db');
-const Pais = require('./Pais'); // Importe o modelo da tabela Pais
+const  Sequelize  = require('sequelize');
+const database = require('../models/db');
 
-const Estado = sequelize.define('estado', {
+const Estado = database.define('estado', {
   idEstado: {
-    type: DataTypes.INTEGER,
+    type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true
+    autoIncrement: true,
+    allowNull: false
   },
   nmEstado: {
-    type: DataTypes.STRING,
+    type: Sequelize.STRING(100),
     allowNull: false
-  },
-  idPais: {
-    type: DataTypes.INTEGER,
-    allowNull: false,
-    references: {
-      model: Pais, // Nome do modelo da tabela Pais
-      key: 'idPais', // Nome do campo referenciado na tabela Pais
-    },
   },
   uf: {
-    type: DataTypes.STRING,
+    type: Sequelize.STRING(2),
     allowNull: false
   },
-  snAtivo: {
-    type: DataTypes.STRING,
-    allowNull: false
-  },
+  snAtivo: {type: Sequelize.STRING(1)}
 });
 
 module.exports = Estado;
