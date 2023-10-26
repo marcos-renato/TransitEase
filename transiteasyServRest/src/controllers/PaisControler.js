@@ -19,7 +19,7 @@ const consultarPaises = async (req, res) => {
 
     res.json(results);
   } catch (error) {
-    console.error('Erro ao executar a consulta:', error);
+    //console.error('Erro ao executar a consulta:', error);
     res.status(500).json({ error: 'Erro ao executar a consulta.' });
   }
 };
@@ -65,37 +65,38 @@ const excluirPais = async (req, res, next) => {
 
     res.status(200).json({ message: 'País excluído com sucesso.' });
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     next(error);
   }
 };
-
-
-
 
 const listarPaises = async (req, res, next) => {
   try {
 
     const results = await Pais.findAll();
     res.json(results);
+    res.status(200);
 
   } catch (error) {
-    console.error('Erro ao executar a consulta:', error);
+    //console.error('Erro ao executar a consulta:', error);
     res.status(500).json({ error: 'Erro ao executar ao listar os paises.' });
   }
 };
 
 const obterPaisPorId = async (req, res, next) => {
   try {
-
     const results = await Pais.findByPk(req.params.id);
-    res.json(results);
-
+    if (!results) {
+      res.status(404).json({ message: 'País não encontrado' });
+    } else {
+      res.status(200).json(results);
+    }
   } catch (error) {
-    console.error('Erro ao executar a consulta:', error);
-    res.status(500).json({ error: 'Erro ao executar ao listar os paises.' });
+    //console.error('Erro ao executar a consulta:', error);
+    res.status(500).json({ error: 'Erro ao executar ao obter o país.' });
   }
 };
+
 
 module.exports = {
   consultarPaises,

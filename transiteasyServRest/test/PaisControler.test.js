@@ -21,6 +21,7 @@ describe('Testes para a função excluirPais', () => {
     expect(res.json).toHaveBeenCalledWith({ message: 'País excluído com sucesso.' });
   });
 
+
   it('Deve retornar um status 404 se o país não for encontrado', async () => {
     // Simule uma solicitação para um país inexistente
     const req = { params: { id: 999 } };
@@ -36,4 +37,46 @@ describe('Testes para a função excluirPais', () => {
     expect(res.status).toHaveBeenCalledWith(404);
     expect(res.json).toHaveBeenCalledWith({ message: 'País não encontrado' });
   });
+  
 });
+describe('Testes para a função listarPaises', () => {
+  it('Deve verificar se o sistema retorna uma lista de países com sucesso', async () => {
+    // Simule uma solicitação e resposta
+    const req = {};
+    const res = {
+      status: jest.fn(),
+      json: jest.fn(),
+    };
+
+    // Chame a função a ser testada
+    await PaisController.listarPaises(req, res);
+
+    // Verifique se a função foi chamada com os valores esperados
+    expect(res.status).toHaveBeenCalledWith(200);
+  });
+ 
+});
+describe('Testes para a função obterPaisPorId', () => {
+  it('Deve verificar se o sistema retorna um país quando passamos um ID', async () => {
+    // Simule uma solicitação e resposta
+    const req = { params: { id:5 } };
+    const res = {
+      status: jest.fn(),
+      json: jest.fn(),
+    };
+
+    // Chame a função a ser testada
+    await PaisController.obterPaisPorId(req, res);
+
+    // Verifique se a função foi chamada com os valores esperados
+    expect(res.status).toHaveBeenCalledWith(200);
+    expect(res.json).toHaveBeenCalledWith({
+      idPais: 5,
+      nmPais: 'BRASIL',
+      snAtivo: 'S',
+      createdAt: '2023-10-19T15:25:07.000Z',
+      updatedAt: '2023-10-19T15:25:07.000Z'
+    });
+  });
+});
+
