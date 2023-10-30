@@ -19,8 +19,9 @@ const consultarPaises = async (req, res) => {
 
     res.json(results);
   } catch (error) {
-    //console.error('Erro ao executar a consulta:', error);
-    res.status(500).json({ error: 'Erro ao executar a consulta.' });
+    console.error('Erro ao executar a consulta:', error);
+    res.status(500);
+    res.json({ error: 'Erro ao executar a consulta.' });
   }
 };
 
@@ -28,7 +29,8 @@ const criarPais = async (req, res, next) => {
   try {
 
     const newPais = await Pais.create(req.body);
-    res.status(201).json(newPais);
+    res.status(201)
+    res.json(newPais);
 
   } catch (error) {
     next(error);
@@ -43,7 +45,8 @@ const atualizarPais = async (req, res, next) => {
     await Pais.update(req.body, {
       where:Pais.idPais={idPais}
     });
-    res.status(200).json({ message: 'País atualizado com sucesso.' });
+    res.status(200);    
+    res.json({ message: 'País atualizado com sucesso.' });
   } catch (error) {
     next(error);
   };
@@ -63,9 +66,10 @@ const excluirPais = async (req, res, next) => {
     // Use a função destroy no resultado retornado por findByPk
     await pais.destroy();
 
-    res.status(200).json({ message: 'País excluído com sucesso.' });
+    res.status(200);
+    res.json({ message: 'País excluído com sucesso.' });
   } catch (error) {
-   // console.log(error);
+    console.log(error);
     next(error);
   }
 };
@@ -78,8 +82,9 @@ const listarPaises = async (req, res, next) => {
     res.status(200);
 
   } catch (error) {
-    //console.error('Erro ao executar a consulta:', error);
-    res.status(500).json({ error: 'Erro ao executar ao listar os paises.' });
+    console.error('Erro ao executar ao obter o país:', error);
+    res.status(500);
+    res.json({ error: 'Erro ao executar ao obter o país.' });
   }
 };
 
@@ -87,13 +92,17 @@ const obterPaisPorId = async (req, res, next) => {
   try {
     const results = await Pais.findByPk(req.params.id);
     if (!results) {
-      res.status(404).json({ message: 'País não encontrado' });
+      res.status(404);
+      res.json({ message: 'País não encontrado.' });
     } else {
-      res.status(200).json(results);
+      res.status(200);
+      res.json(results);
     }
   } catch (error) {
-    //console.error('Erro ao executar a consulta:', error);
-    res.status(500).json({ error: 'Erro ao executar ao obter o país.' });
+    console.error('Erro ao executar ao obter o país:', error);
+    res.status(500);
+    res.json({ error: 'Erro ao executar ao obter o país:.' });
+  
   }
 };
 

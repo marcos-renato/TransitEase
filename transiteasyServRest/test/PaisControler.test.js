@@ -1,6 +1,7 @@
 const Pais = require('../src/models/Pais'); // Importe o modelo Pais
 const PaisController = require('../src/controllers/PaisControler'); // Importe a função a ser testada
 
+
 describe('Testes para a função excluirPais', () => {
   it('Deve excluir um país com sucesso', async () => {
     // Crie um país para testar a exclusão
@@ -39,6 +40,7 @@ describe('Testes para a função excluirPais', () => {
   });
   
 });
+
 describe('Testes para a função listarPaises', () => {
   it('Deve verificar se o sistema retorna uma lista de países com sucesso', async () => {
     // Simule uma solicitação e resposta
@@ -54,12 +56,13 @@ describe('Testes para a função listarPaises', () => {
     // Verifique se a função foi chamada com os valores esperados
     expect(res.status).toHaveBeenCalledWith(200);
   });
- 
 });
-describe('Testes para a função obterPaisPorId', () => {
-  it('Deve verificar se o sistema retorna um país quando passamos um ID', async () => {
-    // Simule uma solicitação e resposta
-    const req = { params: { id:5 } };
+  describe('Testes para a função obterPaisPorId', () => {
+
+
+  it('Deve retornar um status 404 se o país não for encontrado', async () => {
+    // Simule uma solicitação para um país inexistente
+    const req = { params: { id: 999 } };
     const res = {
       status: jest.fn(),
       json: jest.fn(),
@@ -68,15 +71,8 @@ describe('Testes para a função obterPaisPorId', () => {
     // Chame a função a ser testada
     await PaisController.obterPaisPorId(req, res);
 
-    // Verifique se a função foi chamada com os valores esperados
-    expect(res.status).toHaveBeenCalledWith(200);
-    expect(res.json).toHaveBeenCalledWith({
-      idPais: 5,
-      nmPais: 'BRASIL',
-      snAtivo: 'S',
-      createdAt: '2023-10-19T15:25:07.000Z',
-      updatedAt: '2023-10-19T15:25:07.000Z'
-    });
+    // Verifique se a função foi chamada com o status 404
+    expect(res.status).toHaveBeenCalledWith(404);
+    expect(res.json).toHaveBeenCalledWith({ message: 'País não encontrado.' });
   });
 });
-

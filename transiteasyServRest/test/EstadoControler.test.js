@@ -37,3 +37,39 @@ describe('Testes para a função excluirEstado', () => {
         expect(res.json).toHaveBeenCalledWith({ message: 'Estado não encontrado' });
     });
 });
+describe('Testes para a função listarEstados', () => {
+    it('Deve verificar se o sistema retorna uma lista de países com sucesso', async () => {
+      // Simule uma solicitação e resposta
+      const req = {};
+      const res = {
+        status: jest.fn(),
+        json: jest.fn(),
+      };
+  
+      // Chame a função a ser testada
+      await EstadoController.listarEstados(req, res);
+  
+      // Verifique se a função foi chamada com os valores esperados
+      expect(res.status).toHaveBeenCalledWith(200);
+    });
+  });
+  describe('Testes para a função obterEstadoPorId', () => {
+  
+  
+    it('Deve retornar um status 404 se o Estado não for encontrado', async () => {
+      // Simule uma solicitação para um país inexistente
+      const req = { params: { id: 999 } };
+      const res = {
+        status: jest.fn(),
+        json: jest.fn(),
+      };
+  
+      // Chame a função a ser testada
+      await EstadoController.obterEstadoPorId(req, res);
+  
+      // Verifique se a função foi chamada com o status 404
+      expect(res.status).toHaveBeenCalledWith(404);
+      expect(res.json).toHaveBeenCalledWith({ message: 'Estado não encontrado.' });
+    });
+  });
+  
