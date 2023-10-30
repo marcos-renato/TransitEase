@@ -16,7 +16,12 @@ const Estado = database.define('estado', {
     type: Sequelize.STRING(2),
     allowNull: false
   },
-  snAtivo: {type: Sequelize.STRING(1)}
+  idPais: {
+    type: Sequelize.INTEGER,
+    allowNull: false
+  },
+  snAtivo: {type: Sequelize.STRING(1)},
+
 });
 
 module.exports = Estado;

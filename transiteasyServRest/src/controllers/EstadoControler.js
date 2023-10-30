@@ -70,14 +70,12 @@ const excluirEstado = async (req, res, next) => {
   }
 };
 
-
-
-
 const listarEstados = async (req, res, next) => {
   try {
 
     const results = await Estado.findAll();
     res.json(results);
+    res.status(200);
 
   } catch (error) {
     console.error('Erro ao executar a consulta:', error);
@@ -89,7 +87,14 @@ const obterEstadoPorId = async (req, res, next) => {
   try {
 
     const results = await Estado.findByPk(req.params.id);
-    res.json(results);
+
+    if (!results) {
+      res.status(404);
+      res.json({ message: 'Estado não encontrado.' });
+    } else {
+      res.status(200);
+      res.json(results);
+    }
 
   } catch (error) {
     console.error('Erro ao executar a consulta:', error);
