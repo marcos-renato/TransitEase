@@ -38,7 +38,7 @@ describe('Testes para a função excluirPais', () => {
     expect(res.status).toHaveBeenCalledWith(404);
     expect(res.json).toHaveBeenCalledWith({ message: 'País não encontrado' });
   });
-  
+
 });
 
 describe('Testes para a função listarPaises', () => {
@@ -57,7 +57,7 @@ describe('Testes para a função listarPaises', () => {
     expect(res.status).toHaveBeenCalledWith(200);
   });
 });
-  describe('Testes para a função obterPaisPorId', () => {
+describe('Testes para a função obterPaisPorId', () => {
 
 
   it('Deve retornar um status 404 se o país não for encontrado', async () => {

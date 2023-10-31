@@ -51,7 +51,7 @@ describe('Testes para a função listarCidades', () => {
     };
 
     // Chame a função a ser testada
-    await CidadeController.listarCidadees(req, res);
+    await CidadeController.listarCidades(req, res);
 
     // Verifique se a função foi chamada com os valores esperados
     expect(res.status).toHaveBeenCalledWith(200);

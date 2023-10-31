@@ -1,12 +1,33 @@
 const sequelize = require('sequelize');
+const database = require('../models/db');
+const Cidade = database.define('cidades', {
 
-const Cidade = sequelize.define('Cidade', {
-
-  idCidade: sequelize.INTEGER,
-  nmCidade: sequelize.STRING,
-  idEstado: sequelize.INTEGER,
-  snAtivo: sequelize.STRING
-
+  idCidade: {
+    type: sequelize.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false
+  },
+  nmCidade:{
+    type: sequelize.STRING(100),
+    allowNull:false,
+  },
+  idEstado:{
+    type: sequelize.INTEGER,
+    allowNull:false,
+  },
+  snAtivo: {
+    type:sequelize.STRING(1),
+    allowNull:false,
+  },
+  createdAt:{
+    type: sequelize.DATE,
+    allowNull:false,
+  },
+  updatedAt:{
+    type: sequelize.DATE,
+    allowNull:false,
+  },
 });
 
 module.exports = Cidade;

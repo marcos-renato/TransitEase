@@ -1,18 +1,27 @@
-const  Sequelize  = require('sequelize');
+const  sequelize  = require('sequelize');
 const database = require('../models/db');
 
 const Pais = database.define('pais', {
   idPais: {
-    type: Sequelize.INTEGER,
+    type: sequelize.INTEGER,
     primaryKey: true,
     autoIncrement: true,
     allowNull: false
   },
   nmPais: {
-    type: Sequelize.STRING(100),
+    type: sequelize.STRING(100),
     allowNull: false
   },
-  snAtivo: {type: Sequelize.STRING(1)}
+  snAtivo: {type: sequelize.STRING(1)},
+  createdAt:{
+    type: sequelize.DATE,
+    allowNull:false,
+  },
+  updatedAt:{
+    type: sequelize.DATE,
+    allowNull:false,
+  },
+
 });
 
 module.exports = Pais;

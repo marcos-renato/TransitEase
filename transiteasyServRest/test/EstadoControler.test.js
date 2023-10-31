@@ -1,4 +1,4 @@
-const Estado = require('../src/models/Estado'); // Importe o modelo Pais
+const Estado = require('../src/models/Estado'); // Importe o modelo Estado
 const EstadoController = require('../src/controllers/EstadoControler'); // Importe a função a ser testada
 
 describe('Testes para a função excluirEstado', () => {
@@ -38,7 +38,7 @@ describe('Testes para a função excluirEstado', () => {
     });
 });
 describe('Testes para a função listarEstados', () => {
-    it('Deve verificar se o sistema retorna uma lista de países com sucesso', async () => {
+    it('Deve verificar se o sistema retorna uma lista de Estados com sucesso', async () => {
       // Simule uma solicitação e resposta
       const req = {};
       const res = {
