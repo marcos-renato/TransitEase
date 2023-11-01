@@ -1,11 +1,11 @@
 const Cidade = require('../src/models/Cidade'); // Importe o modelo Cidade
-const CidadeController = require('../src/controllers/CidadeControler'); // Importe a função a ser testada
+const cidadeControler = require('../src/controllers/CidadeControler'); // Importe a função a ser testada
 
 
 describe('Testes para a função excluirCidade', () => {
   it('Deve excluir uma cidade com sucesso', async () => {
     // Crie um cidade para testar a exclusão
-    const novaCidade = await Cidade.create({ nmCidade: 'newCidadeTest', snAtivo: 'S' });
+    const novaCidade = await Cidade.create({ nmCidade: 'newCidadeTest', snAtivo: 'S',idEstado:2 });
 
     // Simule uma solicitação e resposta
     const req = { params: { id: novaCidade.idCidade } };
@@ -15,7 +15,7 @@ describe('Testes para a função excluirCidade', () => {
     };
 
     // Chame a função a ser testada
-    await CidadeController.excluirCidade(req, res);
+    await cidadeControler.excluirCidade(req, res);
 
     // Verifique se a função foi chamada com os valores esperados
     expect(res.status).toHaveBeenCalledWith(200);
@@ -32,7 +32,7 @@ describe('Testes para a função excluirCidade', () => {
     };
 
     // Chame a função a ser testada
-    await CidadeController.excluirCidade(req, res);
+    await cidadeControler.excluirCidade(req, res);
 
     // Verifique se a função foi chamada com o status 404
     expect(res.status).toHaveBeenCalledWith(404);
@@ -51,15 +51,13 @@ describe('Testes para a função listarCidades', () => {
     };
 
     // Chame a função a ser testada
-    await CidadeController.listarCidades(req, res);
+    await cidadeControler.listarCidades(req, res);
 
     // Verifique se a função foi chamada com os valores esperados
     expect(res.status).toHaveBeenCalledWith(200);
   });
 });
 describe('Testes para a função obterCidadePorId', () => {
-
-
   it('Deve retornar um status 404 se a cidade não for encontrado', async () => {
     // Simule uma solicitação para uma cidade inexistente
     const req = { params: { id: 999 } };
@@ -69,7 +67,7 @@ describe('Testes para a função obterCidadePorId', () => {
     };
 
     // Chame a função a ser testada
-    await CidadeController.obterCidadePorId(req, res);
+    await cidadeControler.obterCidadePorId(req, res);
 
     // Verifique se a função foi chamada com o status 404
     expect(res.status).toHaveBeenCalledWith(404);

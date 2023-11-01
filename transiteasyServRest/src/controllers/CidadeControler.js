@@ -101,14 +101,14 @@ const obterCidadePorId = async (req, res, next) => {
   } catch (error) {
     console.error('Erro ao executar ao obter a cidade:', error);
     res.status(500);
-    res.json({ error: 'Erro ao executar ao obter a cidade:.' });
+    res.json({ error: 'Erro ao executar ao obter a cidade.' });
   
   }
 };
 
 
 module.exports = {
-  consultarCidade,
+  consultarCidades,
   criarCidade,
   atualizarCidade,
   excluirCidade,

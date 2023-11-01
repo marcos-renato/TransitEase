@@ -20,14 +20,7 @@ const Cidade = database.define('cidades', {
     type:sequelize.STRING(1),
     allowNull:false,
   },
-  createdAt:{
-    type: sequelize.DATE,
-    allowNull:false,
-  },
-  updatedAt:{
-    type: sequelize.DATE,
-    allowNull:false,
-  },
+
 });
 
 module.exports = Cidade;

@@ -13,14 +13,6 @@ const Pais = database.define('pais', {
     allowNull: false
   },
   snAtivo: {type: sequelize.STRING(1)},
-  createdAt:{
-    type: sequelize.DATE,
-    allowNull:false,
-  },
-  updatedAt:{
-    type: sequelize.DATE,
-    allowNull:false,
-  },
 
 });
 

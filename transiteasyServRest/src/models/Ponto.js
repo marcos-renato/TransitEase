@@ -14,7 +14,6 @@ const Ponto = database.define('Pontos', {
   },
   imgPonto: {
     type:sequelize.BLOB,
-    allowNull: false,
   },
   idUsuario: {
     type:sequelize.INTEGER,
@@ -38,20 +37,9 @@ const Ponto = database.define('Pontos', {
   },
   referencia: {
     type:sequelize.STRING,
-    allowNull: false,
   },
   idHorario: {
-    type:sequelize.INTEGER,
-    allowNull: false,
-  },
-  createdAt:{
-    type: sequelize.DATE,
-    allowNull:false,
-  },
-  updatedAt:{
-    type: sequelize.DATE,
-    allowNull:false,
-  },
+    type:sequelize.INTEGER,},
 
 });
 

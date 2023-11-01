@@ -21,14 +21,7 @@ const Estado = database.define('estado', {
     allowNull: false
   },
   snAtivo: {type: Sequelize.STRING(1)},
-  createdAt:{
-    type: sequelize.DATE,
-    allowNull:false,
-  },
-  updatedAt:{
-    type: sequelize.DATE,
-    allowNull:false,
-  },
+
 
 });
 
