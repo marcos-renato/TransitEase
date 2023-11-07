@@ -65,9 +65,8 @@ const excluirCidade = async (req, res, next) => {
 
     // Use a função destroy no resultado retornado por findByPk
     await cidade.destroy();
-
-    res.status(200);
     res.json({ message: 'Cidade excluído com sucesso.' });
+    res.status(200);
   } catch (error) {
     console.log(error);
     next(error);

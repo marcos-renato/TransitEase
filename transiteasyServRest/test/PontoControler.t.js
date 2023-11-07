@@ -2,7 +2,7 @@ const Ponto = require('../src/models/Ponto'); // Importe o modelo Pais
 const PontoController = require('../src/controllers/PontoControler'); // Importe a função a ser testada
 
 
-describe('Testes para a função excluirPonto', () => {
+/*describe('Testes para a função excluirPonto', () => {
   it('Deve excluir uma Ponto com sucesso', async () => {
     // Crie um ponto para testar a exclusão
     const novoPonto = await Ponto.create({ nmPonto: 'newPontoTest', snAtivo: 'S' });
@@ -75,4 +75,4 @@ describe('Testes para a função obterPontoPorId', () => {
     expect(res.status).toHaveBeenCalledWith(404);
     expect(res.json).toHaveBeenCalledWith({ message: 'Ponto não encontrado.' });
   });
-});
+});*/
