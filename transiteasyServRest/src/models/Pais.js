@@ -1,6 +1,5 @@
 const  sequelize  = require('sequelize');
 const database = require('../models/db');
-
 const Pais = database.define('pais', {
   idPais: {
     type: sequelize.INTEGER,

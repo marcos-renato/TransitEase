@@ -3,7 +3,7 @@ const SequenceRouter = require('./sequenceRouter');
 const PaisRouter = require('./paisRouter');
 const EstadoRouter = require('./estadoRouter');
 const CidadeRouter =require('./cidadeRouter');
-const PontoRouter =require('./pontoRouter');
+//const PontoRouter =require('./pontoRouter');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -19,5 +19,5 @@ module.exports = (app) => {
     PaisRouter(app);
     EstadoRouter(app);
     CidadeRouter(app);
-    PontoRouter(app);
+    //PontoRouter(app);
 };
