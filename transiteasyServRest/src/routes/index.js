@@ -4,6 +4,7 @@ const PaisRouter = require('./paisRouter');
 const EstadoRouter = require('./estadoRouter');
 const CidadeRouter =require('./cidadeRouter');
 //const PontoRouter =require('./pontoRouter');
+const UsuarioRouter =require('./usuarioRouter');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -20,4 +21,5 @@ module.exports = (app) => {
     EstadoRouter(app);
     CidadeRouter(app);
     //PontoRouter(app);
+    UsuarioRouter(app);
 };
