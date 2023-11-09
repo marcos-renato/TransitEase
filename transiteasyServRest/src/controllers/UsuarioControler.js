@@ -26,10 +26,11 @@ const consultarUsuario = async (req, res) => {
 
 const criarUsuario = async (req, res, next) => {
   try {
-
-    const newUsuario = await Usuario.create(req.body);
+    const data = req.body; // Seu JSON de entrada
+    data.dtNascimento = new Date(data.dtNascimento); 
+    const newUsuario = await Usuario.create(data);
     res.status(201)
-    res.json(newPais);
+    res.json(newUsuario);
 
   } catch (error) {
     next(error);

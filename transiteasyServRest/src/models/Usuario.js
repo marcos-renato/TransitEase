@@ -24,7 +24,7 @@ const Usuario = database.define('usuarios', {
     allowNull: false
   },
   numRg: {
-    type:sequelize.INTEGER,
+    type:sequelize.STRING(11),
     allowNull: false
   },
   orgaoExpedidorRg: {
