@@ -5,8 +5,10 @@ const EstadoRouter = require('./estadoRouter');
 const CidadeRouter =require('./cidadeRouter');
 //const PontoRouter =require('./pontoRouter');
 const UsuarioRouter =require('./usuarioRouter');
+const TipoDeVeiculo =require('./tipoVeiculoRouter');
 const express = require('express');
 const bodyParser = require('body-parser');
+const tipoVeiculoRouter = require('./tipoVeiculoRouter');
 const app = express();
 
 app.use(bodyParser.json()); // Middleware para analisar o corpo das solicitações em formato JSON
@@ -22,4 +24,5 @@ module.exports = (app) => {
     CidadeRouter(app);
     //PontoRouter(app);
     UsuarioRouter(app);
+    tipoVeiculoRouter(app);
 };
