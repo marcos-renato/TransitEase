@@ -9,7 +9,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const tipoVeiculoRouter = require('./tipoVeiculoRouter');
 const coresRouter =require('./coresRouter');
-const veiculoRouter = reuire('./veiculoRouter.js');
+const veiculoRouter = require('./veiculoRouter.js');
 const app = express();
 
 app.use(bodyParser.json()); // Middleware para analisar o corpo das solicitações em formato JSON
